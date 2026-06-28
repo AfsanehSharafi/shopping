@@ -61,6 +61,16 @@ namespace Domain.Entities
             SetUpdatedAt(); // Mark as Updated
         }
 
+        public void UpdateEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                throw new ArgumentException("Email cannot be empty.", nameof(email));
+            // Potentially add email format validation here
+
+            Email = email;
+            SetUpdatedAt();
+        }
+
 
     }
 }
