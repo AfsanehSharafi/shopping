@@ -1,5 +1,6 @@
 ﻿using Domain.Common;
 using System.Collections.Generic;
+using System.Data;
 using System.Xml.Linq;
 
 namespace Domain.Entities
@@ -87,6 +88,12 @@ namespace Domain.Entities
         public void UpdatePhoneNumber(string? phoneNumber)
         {
             PhoneNumber = phoneNumber;
+            SetUpdatedAt();
+        }
+
+        public void UpdateRole(Role newRole)
+        {
+            UserRole = newRole;
             SetUpdatedAt();
         }
 
