@@ -61,6 +61,7 @@ namespace Domain.Entities
             SetUpdatedAt(); // Mark as Updated
         }
 
+
         public void UpdateEmail(string email)
         {
             if (string.IsNullOrWhiteSpace(email))
@@ -71,6 +72,23 @@ namespace Domain.Entities
             SetUpdatedAt();
         }
 
+
+
+        public void UpdatePassword(string newPasswordHash)
+        {
+            if (string.IsNullOrWhiteSpace(newPasswordHash))
+                throw new ArgumentException("New password hash cannot be empty.", nameof(newPasswordHash));
+
+            PasswordHash = newPasswordHash;
+            SetUpdatedAt();
+        }
+
+
+        public void UpdatePhoneNumber(string? phoneNumber)
+        {
+            PhoneNumber = phoneNumber;
+            SetUpdatedAt();
+        }
 
     }
 }
