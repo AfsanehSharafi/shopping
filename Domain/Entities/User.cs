@@ -47,5 +47,20 @@ namespace Domain.Entities
             UserRole= userRole;
             // CreatedAt is set by BaseEntity
         }
+
+        // Methods to modify the User state (Encapsulation)
+        public void UpdateName(string firstName , string lastName)
+        {
+            if(string.IsNullOrWhiteSpace(firstName))
+                throw new ArgumentException("first name can not be empty." , nameof(firstName));
+            if(string.IsNullOrWhiteSpace(lastName))
+                throw new ArgumentException("last name can not be empty.", nameof(lastName));
+
+            FirstName= firstName;
+            LastName= lastName;
+            SetUpdatedAt(); // Mark as Updated
+        }
+
+
     }
 }
