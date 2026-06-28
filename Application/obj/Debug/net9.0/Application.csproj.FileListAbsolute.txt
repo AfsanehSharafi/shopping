@@ -1,0 +1,12 @@
+C:\Projects\1405\shopping\Application\bin\Debug\net9.0\Application.deps.json
+C:\Projects\1405\shopping\Application\bin\Debug\net9.0\Application.dll
+C:\Projects\1405\shopping\Application\bin\Debug\net9.0\Application.pdb
+C:\Projects\1405\shopping\Application\obj\Debug\net9.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\1405\shopping\Application\obj\Debug\net9.0\Application.AssemblyInfoInputs.cache
+C:\Projects\1405\shopping\Application\obj\Debug\net9.0\Application.AssemblyInfo.cs
+C:\Projects\1405\shopping\Application\obj\Debug\net9.0\Application.csproj.CoreCompileInputs.cache
+C:\Projects\1405\shopping\Application\obj\Debug\net9.0\Application.sourcelink.json
+C:\Projects\1405\shopping\Application\obj\Debug\net9.0\Application.dll
+C:\Projects\1405\shopping\Application\obj\Debug\net9.0\refint\Application.dll
+C:\Projects\1405\shopping\Application\obj\Debug\net9.0\Application.pdb
+C:\Projects\1405\shopping\Application\obj\Debug\net9.0\ref\Application.dll

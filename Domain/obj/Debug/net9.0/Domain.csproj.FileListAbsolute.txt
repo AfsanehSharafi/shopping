@@ -1,0 +1,12 @@
+C:\Projects\1405\shopping\Domain\bin\Debug\net9.0\Domain.deps.json
+C:\Projects\1405\shopping\Domain\bin\Debug\net9.0\Domain.dll
+C:\Projects\1405\shopping\Domain\bin\Debug\net9.0\Domain.pdb
+C:\Projects\1405\shopping\Domain\obj\Debug\net9.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\1405\shopping\Domain\obj\Debug\net9.0\Domain.AssemblyInfoInputs.cache
+C:\Projects\1405\shopping\Domain\obj\Debug\net9.0\Domain.AssemblyInfo.cs
+C:\Projects\1405\shopping\Domain\obj\Debug\net9.0\Domain.csproj.CoreCompileInputs.cache
+C:\Projects\1405\shopping\Domain\obj\Debug\net9.0\Domain.sourcelink.json
+C:\Projects\1405\shopping\Domain\obj\Debug\net9.0\Domain.dll
+C:\Projects\1405\shopping\Domain\obj\Debug\net9.0\refint\Domain.dll
+C:\Projects\1405\shopping\Domain\obj\Debug\net9.0\Domain.pdb
+C:\Projects\1405\shopping\Domain\obj\Debug\net9.0\ref\Domain.dll
