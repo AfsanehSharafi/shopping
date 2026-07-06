@@ -19,5 +19,16 @@
         // Private constructor for EF Core
         private Category() { }
 
+        public Category(string name, string? description = null, Guid? parentCategoryId = null)
+        {
+            if(string.IsNullOrWhiteSpace(name))
+            
+                throw new ArgumentException("Category Name cannot be empty.", nameof(name));
+            
+            Name = name;
+            Description = description;
+            ParentCategoryId = parentCategoryId;
+        }
+
     }
 }
