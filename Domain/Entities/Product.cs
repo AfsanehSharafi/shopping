@@ -20,13 +20,10 @@ namespace Domain.Entities
         {
             if(string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException("Product name cannot be empty.", nameof(name));
-
             if(price < 0)
                 throw new ArgumentException("Price cannot be negative.", nameof(price));
-
             if(stockQuantity < 0)
                 throw new ArgumentException("Initial stock cannot be negative.", nameof(stockQuantity));
-
             Id = Guid.NewGuid();
             Name = name;
             Description = description;
@@ -34,6 +31,21 @@ namespace Domain.Entities
             StockQuantity = stockQuantity;
             CategoryId = categoryId;
             IsActive = true;
+        }
+
+
+        public void UpdateDetails(string name, string description, decimal price)
+        {
+            if(string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Name cannot be empty.");
+            if(price < 0)
+                throw new ArgumentException("Price cannot be negative.");
+
+            Name = name;
+            Description = description;
+            Price = price;
+            SetUpdatedAt();
+
         }
 
     }
