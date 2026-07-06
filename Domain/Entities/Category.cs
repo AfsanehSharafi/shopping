@@ -44,5 +44,11 @@ namespace Domain.Entities
             
         }
 
+        public void ChangeParent(Guid? newParentCategoryId)
+        {
+            ParentCategoryId = newParentCategoryId;
+            SetUpdatedAt();
+        }
+
     }
 }
