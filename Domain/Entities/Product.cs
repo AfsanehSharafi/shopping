@@ -2,7 +2,7 @@
 
 namespace Domain.Entities
 {
-    public class Product:AggregateRoot
+    public class Product : AggregateRoot
     {
         public string Name { get; private set; }
         public string Description { get; private set; }
@@ -18,11 +18,11 @@ namespace Domain.Entities
 
         public Product(string name, string description, decimal price, int stockQuantity, Guid categoryId)
         {
-            if(string.IsNullOrWhiteSpace(name))
+            if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException("Product name cannot be empty.", nameof(name));
-            if(price < 0)
+            if (price < 0)
                 throw new ArgumentException("Price cannot be negative.", nameof(price));
-            if(stockQuantity < 0)
+            if (stockQuantity < 0)
                 throw new ArgumentException("Initial stock cannot be negative.", nameof(stockQuantity));
             Id = Guid.NewGuid();
             Name = name;
@@ -36,9 +36,9 @@ namespace Domain.Entities
 
         public void UpdateDetails(string name, string description, decimal price)
         {
-            if(string.IsNullOrWhiteSpace(name))
+            if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException("Name cannot be empty.");
-            if(price < 0)
+            if (price < 0)
                 throw new ArgumentException("Price cannot be negative.");
 
             Name = name;
@@ -65,9 +65,9 @@ namespace Domain.Entities
         // افزایش موجودی مثلاً: موقع شارژ انبار
         public void AddStock(int quantity)
         {
-            if(quantity <= 0)
+            if (quantity <= 0)
                 throw new ArgumentException("Quantity to add must be positive.");
-            
+
             StockQuantity += quantity;
             SetUpdatedAt();
         }
@@ -75,7 +75,7 @@ namespace Domain.Entities
 
         public void ChangePrice(decimal newPrice)
         {
-            if(Price < 0)
+            if (Price < 0)
                 throw new ArgumentException("New price cannot be negative.");
 
             Price = newPrice;
