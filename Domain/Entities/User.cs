@@ -1,7 +1,4 @@
 ﻿using Domain.Common;
-using System.Collections.Generic;
-using System.Data;
-using System.Xml.Linq;
 
 namespace Domain.Entities
 {
