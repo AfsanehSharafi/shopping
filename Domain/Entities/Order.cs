@@ -60,5 +60,20 @@ namespace Domain.Entities
             Status = OrderStatus.Cancelled;
             SetUpdatedAt();
         }
+
+
+        public void MarkAsPaid()
+        {
+            if (Status != OrderStatus.Pending)
+                throw new InvalidOperationException("Only pending orders can be marked as paid.");
+
+            Status = OrderStatus.Paid;
+            SetUpdatedAt();
+        }
+
+        private void CalculateTotalAmount()
+        {
+            TotalAmount = OrderItems.Sum(item => item.TotalPrice);
+        }
     }
 }
