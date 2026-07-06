@@ -67,6 +67,19 @@ namespace Domain.Entities
         {
             if(quantity <= 0)
                 throw new ArgumentException("Quantity to add must be positive.");
+            
+            StockQuantity += quantity;
+            SetUpdatedAt();
+        }
+
+
+        public void ChangePrice(decimal newPrice)
+        {
+            if(Price < 0)
+                throw new ArgumentException("New price cannot be negative.");
+
+            Price = newPrice;
+            SetUpdatedAt();
         }
 
     }
