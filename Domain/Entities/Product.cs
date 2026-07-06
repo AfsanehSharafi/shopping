@@ -49,7 +49,7 @@ namespace Domain.Entities
         }
 
 
-        // منطق مهم: کاهش موجودی (مثلاً موقع خرید)
+        //  کاهش موجودی موقع خرید
         public void ReduceStock(int quantity)
         {
             if (quantity <= 0)
@@ -61,6 +61,13 @@ namespace Domain.Entities
             SetUpdatedAt();
         }
 
+
+        // افزایش موجودی مثلاً: موقع شارژ انبار
+        public void AddStock(int quantity)
+        {
+            if(quantity <= 0)
+                throw new ArgumentException("Quantity to add must be positive.");
+        }
 
     }
 }
