@@ -15,5 +15,19 @@ namespace Domain.Entities
 
         // Private constructor for EF Core
         private OrderItem() { }
+
+        public OrderItem(Guid productId, string productName, decimal unitPrice, int quantity)
+        {
+            if (quantity <= 0)
+                throw new ArgumentException("Quantity must be greater than zero.");
+            if (unitPrice < 0)
+                throw new ArgumentException("Unit price cannot be negative.");
+
+            ProductId = productId;
+            ProductName = productName;
+            UnitPrice = unitPrice;
+            Quantity = quantity;
+        }
+
     }
 }
