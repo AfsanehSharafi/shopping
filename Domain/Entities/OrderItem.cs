@@ -29,5 +29,14 @@ namespace Domain.Entities
             Quantity = quantity;
         }
 
+
+        // متد برای تغییر تعداد (مثلاً مشتری می‌خواهد تعداد را در سبد خرید تغییر دهد)
+        public void UpdateQuantity(int newQuantity)
+        {
+            if(newQuantity <= 0)
+                throw new ArgumentException("Quantity must be greater than zero.");
+
+            Quantity = newQuantity;
+        }
     }
 }
