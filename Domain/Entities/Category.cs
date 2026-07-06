@@ -2,7 +2,7 @@
 
 namespace Domain.Entities
 {
-    public class Category:AggregateRoot
+    public class Category : AggregateRoot
     {
         public string Name { get; private set; }
         public string? Description { get; private set; }
@@ -23,16 +23,16 @@ namespace Domain.Entities
 
         public Category(string name, string? description = null, Guid? parentCategoryId = null)
         {
-            if(string.IsNullOrWhiteSpace(name))
-            
+            if (string.IsNullOrWhiteSpace(name))
+
                 throw new ArgumentException("Category Name cannot be empty.", nameof(name));
-            
+
             Name = name;
             Description = description;
             ParentCategoryId = parentCategoryId;
         }
 
-        public void UpdateDetails(string name , string? description)
+        public void UpdateDetails(string name, string? description)
         {
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException("Category Name cannot be empty.", nameof(name));
@@ -40,8 +40,6 @@ namespace Domain.Entities
             Name += name;
             Description += description;
             SetUpdatedAt();
-
-            
         }
 
         public void ChangeParent(Guid? newParentCategoryId)
@@ -49,6 +47,18 @@ namespace Domain.Entities
             ParentCategoryId = newParentCategoryId;
             SetUpdatedAt();
         }
+
+
+        public void AddSubCategory(Category subCategory)
+        {
+            if(subCategory == null)
+                throw new ArgumentNullException(nameof(subCategory));
+
+            SubCategories.Add(subCategory);
+            SetUpdatedAt();
+        }
+
+
 
     }
 }
