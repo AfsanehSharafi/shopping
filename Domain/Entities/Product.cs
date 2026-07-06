@@ -48,5 +48,19 @@ namespace Domain.Entities
 
         }
 
+
+        // منطق مهم: کاهش موجودی (مثلاً موقع خرید)
+        public void ReduceStock(int quantity)
+        {
+            if (quantity <= 0)
+                throw new ArgumentException("Quantity to reduce must be positive.");
+            if (StockQuantity < quantity)
+                throw new InvalidOperationException("Not enough stock available.");
+
+            StockQuantity -= quantity;
+            SetUpdatedAt();
+        }
+
+
     }
 }
