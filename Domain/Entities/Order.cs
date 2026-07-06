@@ -52,5 +52,13 @@ namespace Domain.Entities
         }
 
 
+        public void CancelledOrder()
+        {
+            if(Status == OrderStatus.Shipped || Status == OrderStatus.Delivered)
+                throw new InvalidOperationException("Cannot cancel an order that has already been shipped or delivered.");
+
+            Status = OrderStatus.Cancelled;
+            SetUpdatedAt();
+        }
     }
 }
