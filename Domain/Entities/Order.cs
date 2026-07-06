@@ -26,5 +26,14 @@ namespace Domain.Entities
 
         // Private constructor for EF Core
         private Order() { }
+
+        public Order(Guid userId)
+        {
+            Id = Guid.NewGuid();
+            UserId = userId;
+            OrderDate = DateTime.UtcNow;
+            Status = OrderStatus.Pending;
+            TotalAmount = 0;
+        }
     }
 }
