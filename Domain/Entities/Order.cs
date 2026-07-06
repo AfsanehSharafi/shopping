@@ -35,5 +35,22 @@ namespace Domain.Entities
             Status = OrderStatus.Pending;
             TotalAmount = 0;
         }
+
+        // متد برای اضافه کردن آیتم به سفارش
+        public void AddOrderItem(Product product, int quantity)
+        {
+            if (product == null) throw new ArgumentNullException(nameof(product));
+            if (quantity <= 0) throw new ArgumentException("Quantity must be positive.");
+
+            var orderItem = new OrderItem(product.Id, product.Name, product.Price, quantity);
+
+            OrderItems.Add(orderItem);
+
+            // محاسبه مجدد مبلغ کل سفارش
+            CalculateTotalAmount();
+            SetUpdatedAt();
+        }
+
+
     }
 }
