@@ -88,5 +88,11 @@ namespace Domain.Entities
             SetUpdatedAt();
         }
 
+        public void Deactivate()
+        {
+            IsActive = false;
+            SetUpdatedAt();
+        }
+
     }
 }
