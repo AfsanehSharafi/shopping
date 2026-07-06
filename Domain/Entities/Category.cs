@@ -1,6 +1,8 @@
-﻿namespace Domain.Entities
+﻿using Domain.Common;
+
+namespace Domain.Entities
 {
-    public class Category
+    public class Category:AggregateRoot
     {
         public string Name { get; private set; }
         public string? Description { get; private set; }
@@ -28,6 +30,18 @@
             Name = name;
             Description = description;
             ParentCategoryId = parentCategoryId;
+        }
+
+        public void UpdateDetails(string name , string? description)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Category Name cannot be empty.", nameof(name));
+
+            Name += name;
+            Description += description;
+            SetUpdatedAt();
+
+            
         }
 
     }
