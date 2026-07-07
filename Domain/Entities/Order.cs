@@ -1,4 +1,5 @@
 ﻿using Domain.Common;
+using Domain.Events;
 
 namespace Domain.Entities
 {
@@ -17,14 +18,11 @@ namespace Domain.Entities
         public decimal TotalAmount { get; private set; }
         public OrderStatus Status { get; private set; }
 
-
         public Guid UserId { get; private set; }
         public User User { get; private set; }
 
-        // Navigation Property: لیست آیتم‌های این سفارش
         public ICollection<OrderItem> OrderItems { get; private set; } = new List<OrderItem>();
 
-        // Private constructor for EF Core
         private Order() { }
 
         public Order(Guid userId)
@@ -34,9 +32,11 @@ namespace Domain.Entities
             OrderDate = DateTime.UtcNow;
             Status = OrderStatus.Pending;
             TotalAmount = 0;
+
+            // رویداد ایجاد سفارش
+            AddDomainEvent(new OrderCreatedEvent(Id));
         }
 
-        // متد برای اضافه کردن آیتم به سفارش
         public void AddOrderItem(Product product, int quantity)
         {
             if (product == null) throw new ArgumentNullException(nameof(product));
@@ -46,21 +46,21 @@ namespace Domain.Entities
 
             OrderItems.Add(orderItem);
 
-            // محاسبه مجدد مبلغ کل سفارش
             CalculateTotalAmount();
             SetUpdatedAt();
         }
 
-
         public void CancelledOrder()
         {
-            if(Status == OrderStatus.Shipped || Status == OrderStatus.Delivered)
+            if (Status == OrderStatus.Shipped || Status == OrderStatus.Delivered)
                 throw new InvalidOperationException("Cannot cancel an order that has already been shipped or delivered.");
 
             Status = OrderStatus.Cancelled;
             SetUpdatedAt();
-        }
 
+            // رویداد لغو سفارش
+            AddDomainEvent(new OrderCancelledEvent(Id));
+        }
 
         public void MarkAsPaid()
         {
@@ -69,6 +69,9 @@ namespace Domain.Entities
 
             Status = OrderStatus.Paid;
             SetUpdatedAt();
+
+            // رویداد پرداخت موفق
+            AddDomainEvent(new OrderPaidEvent(Id));
         }
 
         private void CalculateTotalAmount()

@@ -17,4 +17,6 @@ public class OrderCreatedEvent : IDomainEvent
         // ثبت زمان دقیق وقوع رویداد
         OccurredOn = DateTime.UtcNow;
     }
+
+
 }
