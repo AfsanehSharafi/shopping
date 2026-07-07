@@ -1,11 +1,6 @@
-﻿namespace Domain.Common;
+﻿namespace Domain.Events;
 
-/// <summary>
-/// این اینترفیس پایه برای تمام رویدادهای دامین ما خواهد بود.
-/// هر اتفاقی که در دامین بیفتد، باید این اینترفیس را پیاده‌سازی کند.
-/// </summary>
-public interface IDomainEvent
+public interface IDomainEvent : INotification // اگر از MediatR استفاده می‌کنی
 {
-    // معمولاً رویدادها زمانی که رخ می‌دهند، تاریخ و زمان را هم با خود دارند
     DateTime OccurredOn { get; }
 }
